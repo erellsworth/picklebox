@@ -21,6 +21,9 @@ class PickledPublication extends reduxComponent {
             <div>
               <PublicationHeader data={state.publicationInfo.payload.collection} />
               <PublicationTags tags={state.publicationInfo.payload.collection.tags} />
+              {state.publicationInfo.last_update &&
+                <p>Last updated: {state.publicationInfo.last_update}</p>
+              }
             </div>
           }
       </div>

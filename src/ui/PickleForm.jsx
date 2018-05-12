@@ -38,7 +38,7 @@ class PickleForm extends reduxComponent {
 
     axios.get(app_vars.api_url + this.state.url.replace(/\//g, '^^'), api_options)
           .then(function (response) {
-          // console.log('response', response);
+           console.log('response', response);
             store.dispatch(setPublicationPayload(response.data.payload));
             newState = Object.assign(that.state, {buttonClass: 'button is-primary is-rounded'});
             that.setState(newState);             
@@ -53,7 +53,6 @@ class PickleForm extends reduxComponent {
   }
 
   render(){ 
-    console.log("this.state", this.state);
     return <form onSubmit={this.handleSubmit}>
               <div className="field is-horizontal">
                 <div className="field-label is-normal">
