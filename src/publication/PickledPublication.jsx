@@ -12,9 +12,9 @@ class PickledPublication extends reduxComponent {
     console.log('PickledPublication', state);
     
     if(state.publicationInfo.payload){
-      var tintColor = state.publicationInfo.payload.collection.tintColor;
+      var color = state.publicationInfo.payload.collection.colorPalette.defaultBackgroundSpectrum.backgroundColor;
       var styles = {
-        background: tintColor.slice(0, 1) + tintColor.slice(3) //for some reason Medium
+        background: color.slice(0, 1) + color.slice(3) //for some reason Medium
       }
       return <div className="container is-fullhd" style={styles}>
           {state.publicationInfo.payload.collection &&
