@@ -17,7 +17,8 @@ class PickleForm extends reduxComponent {
     super(props);
     this.state = {
       url: 'https://medium.com/pickle-fork',
-      errors:[]
+      errors:[],
+      buttonClass: 'button is-primary is-rounded'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,23 +32,28 @@ class PickleForm extends reduxComponent {
   handleSubmit(e){
     e.preventDefault();
     const { store } = this.context;
+    var newState = Object.assign(this.state, {buttonClass: 'button is-primary is-rounded is-loading'});
+    this.setState(newState);
     var that = this;
 
     axios.get(app_vars.api_url + this.state.url.replace(/\//g, '^^'), api_options)
           .then(function (response) {
           // console.log('response', response);
             store.dispatch(setPublicationPayload(response.data.payload));
+            newState = Object.assign(that.state, {buttonClass: 'button is-primary is-rounded'});
+            that.setState(newState);             
           })
           .catch(function (error) {
             console.log('error', error);
             var errors = that.state.errors;
             errors.push(error);
-            var newState = Object.assign(that.state, {errors: errors});
+            newState = Object.assign(that.state, {errors: errors, buttonClass: 'button is-primary is-rounded'});
             that.setState(newState);           
           });
   }
 
   render(){ 
+    console.log("this.state", this.state);
     return <form onSubmit={this.handleSubmit}>
               <div className="field is-horizontal">
                 <div className="field-label is-normal">
@@ -67,7 +73,7 @@ class PickleForm extends reduxComponent {
                   </div>
                 </div>
               </div>    
-              <button className="button is-primary">Pickle My Publication</button>          
+              <button className={this.state.buttonClass}>Pickle My Publication</button>          
             </form>    
   }
 }

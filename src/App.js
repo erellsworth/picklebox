@@ -1,9 +1,11 @@
 import React from 'react';
 import reduxComponent from './components/reduxComponent';
+import PickledPublication from './publication/PickledPublication';
+import PickleForm from './ui/PickleForm';
 import './App.css';
 import 'bulma/css/bulma.css'
 
-import PickleForm from './ui/PickleForm.jsx';
+
 
 class App extends reduxComponent {
 
@@ -15,7 +17,8 @@ class App extends reduxComponent {
             <header className="App-header">
               <h1 className="App-title">Welcome to Pickle Box</h1>
             </header>
-            <PickleForm />   
+            <PickleForm />
+            <PickledPublication />
           </div>   
         </section>  
       </div>
