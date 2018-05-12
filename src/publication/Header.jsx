@@ -13,6 +13,11 @@ class PublicationHeader extends reduxComponent {
                   <h2 className="subtitle">
                     {this.props.data.description}
                   </h2>
+                  <hr/>
+                  <h3>{this.props.data.metadata.followerCount} followers</h3>
+                  {this.props.data.twitterUsername &&
+                    <h4>Twitter: @{this.props.data.twitterUsername}</h4>
+                  }
                 </div>
               </div>
             </section>      
