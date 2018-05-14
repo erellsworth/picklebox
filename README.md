@@ -4,6 +4,8 @@ Stats and other stuff for Medium.com
 
 Work in Progress
 
+Demo at: https://picklefork.erellsworth.com/
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
