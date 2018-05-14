@@ -5,8 +5,6 @@ import PickleForm from './ui/PickleForm';
 import './App.css';
 import 'bulma/css/bulma.css'
 
-
-
 class App extends reduxComponent {
 
   render() {

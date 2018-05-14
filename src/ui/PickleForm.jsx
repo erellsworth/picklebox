@@ -4,9 +4,17 @@ import reduxComponent from '../components/reduxComponent';
 import {setPublicationPayload} from '../actions';
 import * as app_vars from '../app_vars.js';
 
+var api_url = app_vars.api_url;
+var api_key = app_vars.api_key;
+
+if(process.env.NODE_ENV === "development"){
+  api_url = app_vars.local_api_url;
+  api_key = app_vars.local_api_key;  
+}
+
 const api_options = {
         headers: {
-          'Authorization': 'Bearer ' + app_vars.api_key,
+          'Authorization': 'Bearer ' + api_key,
           'Accept': 'application/json',
           'Content-Type' : 'application/json',
         }
@@ -36,7 +44,7 @@ class PickleForm extends reduxComponent {
     this.setState(newState);
     var that = this;
 
-    axios.get(app_vars.api_url + this.state.url.replace(/\//g, '^^'), api_options)
+    axios.get(api_url + this.state.url.replace(/\//g, '^^'), api_options)
           .then(function (response) {
            console.log('response', response);
             store.dispatch(setPublicationPayload(response.data.payload));

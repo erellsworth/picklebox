@@ -4,7 +4,6 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import 'normalize.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 import publicationInfo from './reducers/publicationReducer';
 
@@ -15,11 +14,10 @@ var reducers = combineReducers({
 const store = createStore(reducers);
 
 function render () {   
-	ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+	ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('pickle_box'));
 }
 
 
 store.subscribe(render);
 
 render();
-registerServiceWorker();
